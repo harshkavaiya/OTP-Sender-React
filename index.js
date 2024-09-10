@@ -48,7 +48,7 @@ const sendopt = (email, otp) => {
   const name = extractName(email);
   const htmlcontent = testtemp(otp, name);
   const mailoption = {
-    from: "harsh",
+    from: "harshkavaiya30gamil.com",
     to: email,
     subject: "OTP Verification",
     html: htmlcontent,
@@ -77,7 +77,7 @@ app.post("/send-otp", (req, res) => {
   // Set OTP and its expiry time (5 minutes from now)
   userOtp[email] = {
     otp: otp,
-    expiresAt: Date.now() + 60 * 1000, // 1 minutes in milliseconds
+    expiresAt: Date.now() + 10 * 60 * 1000, // 1 minutes in milliseconds
   };
 
   sendopt(email, otp);
@@ -113,9 +113,9 @@ app.post("/verify-otp", (req, res) => {
 });
 
 // Start server
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Server running at http://localhost:${port}`);
+// });
 
 const testtemp = (otp, name) =>
   `
@@ -175,7 +175,7 @@ const testtemp = (otp, name) =>
             <h3>Hello, ${name}!</h3>
             <p>Your OTP code is:</p>
             <div class="otp-code">${otp}</div>
-            <p>Please use this code to complete your verification.</p>
+            <p>Please use this code in 10 minutes to complete your verification.</p>
         </div>
         <div class="footer">
             <p>Thank you for using our services!</p>
