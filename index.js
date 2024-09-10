@@ -55,8 +55,7 @@ const sendopt = (email, otp) => {
 };
 
 app.get("/", (req, res) => {
-  // res.send("Hello this is testing this server for Run currect");
-  res.send(port + appPass + mymail);
+  res.send("Hello this is testing this server for Run currect");
 });
 
 app.post("/send-otp", (req, res) => {
