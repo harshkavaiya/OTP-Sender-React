@@ -36,9 +36,10 @@ const extractName = (email) => {
 
 const sendopt = (email, otp) => {
   const name = extractName(email);
+  console.log(emailID);
   const htmlcontent = testtemp(otp, name);
   const mailoption = {
-    from: "harshkavaiya30gamil.com",
+    from: emailID,
     to: email,
     subject: "OTP Verification",
     html: htmlcontent,
