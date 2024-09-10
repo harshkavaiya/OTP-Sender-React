@@ -44,7 +44,7 @@ const sendopt = (email, otp) => {
     subject: "OTP Verification",
     html: htmlcontent,
   };
-
+  console.log(`Sending email to: ${email}`);
   trans.sendMail(mailoption, (err, info) => {
     if (err) {
       console.log(`Error sending email :`, err);
