@@ -5,6 +5,8 @@ require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 3000;
+const appPass = process.env.APP_PASS;
+const mymail = process.env.EMAIL_ID;
 
 app.use(cors());
 
@@ -15,8 +17,8 @@ let userOtp = {};
 const trans = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: process.env.EMAIL_ID,
-    pass: process.env.APP_PASS,
+    user: mymail,
+    pass: appPass,
   },
 });
 
@@ -34,10 +36,10 @@ const extractName = (email) => {
 
 const sendopt = (email, otp) => {
   const name = extractName(email);
-  console.log(emailID);
+
   const htmlcontent = testtemp(otp, name);
   const mailoption = {
-    from: emailID,
+    from: "harsh kavaiya",
     to: email,
     subject: "OTP Verification",
     html: htmlcontent,
@@ -53,7 +55,8 @@ const sendopt = (email, otp) => {
 };
 
 app.get("/", (req, res) => {
-  res.send("Hello this is testing this server for Run currect");
+  // res.send("Hello this is testing this server for Run currect");
+  res.send(port + appPass + mymail);
 });
 
 app.post("/send-otp", (req, res) => {
