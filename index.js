@@ -74,10 +74,10 @@ app.post("/send-otp", (req, res) => {
     res.status(400).json({ message: "email is requied!" });
   }
 
-  // Set OTP and its expiry time (5 minutes from now)
+  // Set OTP and its expiry time (10 minutes from now)
   userOtp[email] = {
     otp: otp,
-    expiresAt: Date.now() + 10 * 60 * 1000, // 1 minutes in milliseconds
+    expiresAt: Date.now() + 10 * 60 * 1000, // 10 minutes in milliseconds
   };
 
   sendopt(email, otp);
@@ -112,10 +112,9 @@ app.post("/verify-otp", (req, res) => {
   }
 });
 
-// Start server
-// app.listen(port, () => {
-//   console.log(`Server running at http://localhost:${port}`);
-// });
+app.listen(port, () => {
+  console.log(`Server running`);
+});
 
 const testtemp = (otp, name) =>
   `
