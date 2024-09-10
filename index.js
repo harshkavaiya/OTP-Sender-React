@@ -4,21 +4,11 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const appPass = process.env.APP_PASS;
+const emailID = process.env.EMAIL_ID;
 const app = express();
 const port = process.env.PORT || 3000;
 
-const whitelist = ["https://otpbyhk.netlify.app"];
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(express.json());
 
@@ -27,7 +17,7 @@ let userOtp = {};
 const trans = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "harshkavaiya30@gmail.com",
+    user: emailID,
     pass: appPass,
   },
 });
