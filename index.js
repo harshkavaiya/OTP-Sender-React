@@ -7,7 +7,7 @@ const appPass = process.env.APP_PASS;
 const app = express();
 const port = process.env.PORT || 3000;
 
-const whitelist = ["https://your-website.com"];
+const whitelist = ["https://otpbyhk.netlify.app"];
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
