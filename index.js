@@ -51,6 +51,10 @@ const sendopt = (email, otp) => {
   });
 };
 
+app.get("/", (req, res) => {
+  res.send("Hello this is testing this server for Run currect");
+});
+
 app.post("/send-otp", (req, res) => {
   const { email } = req.body;
   const otp = genotp();
